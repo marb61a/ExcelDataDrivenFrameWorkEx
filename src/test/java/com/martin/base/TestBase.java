@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -48,6 +51,29 @@ public class TestBase {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			if(config.getProperty("browser").equals("firefox")) {
+				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\executables\\gecko.exe");
+				
+				driver = new FirefoxDriver();
+			} else if(config.getProperty("browser").equals("chrome")) {
+				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\executables\\chromedriver.exe");
+				
+				driver = new ChromeDriver();
+			} else if(config.getProperty("browser").equals("ie")) {
+				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\executables\\IEDriverServer.exe");
+				
+				driver = new InternetExplorerDriver();
+			}
+			
+			// Getting the url added in the Config properties file
+			driver.get(config.getProperty("testsiteurl"));
+			
+			// Maximise the browser window
+			driver.manage().window().maximize();
+			
+			// Add timeout waiting time
+			driver.manage().timeouts().implicitlyWait(config.getProperty("implicit.wait"));
 		}
 	}
 	
