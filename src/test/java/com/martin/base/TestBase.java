@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -72,13 +73,14 @@ public class TestBase {
 			// Maximise the browser window
 			driver.manage().window().maximize();
 			
-			// Add timeout waiting time
-			driver.manage().timeouts().implicitlyWait(config.getProperty("implicit.wait"));
+			// Add timeout waiting time from config file, needs to be converted to in
+			driver.manage().timeouts().implicitlyWait(Integer.parseInt(config.getProperty("implicit.wait")), TimeUnit.SECONDS);
+			
 		}
 	}
 	
 	@AfterSuite
 	public void tearDown() {
-		
+		driver.quit();
 	}
 }
