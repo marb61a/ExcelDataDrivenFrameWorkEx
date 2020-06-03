@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -23,6 +25,7 @@ public class TestBase {
 	public static Properties config = new Properties();
 	public static Properties OR = new Properties();
 	public static FileInputStream fis;
+	public static Logger log = Logger.getLogger("devLogger");
 	
 	@BeforeSuite
 	public void setUp() {
@@ -35,6 +38,7 @@ public class TestBase {
 			}
 			try {
 				config.load(fis);
+				log.debug("Config file loaded");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -48,6 +52,7 @@ public class TestBase {
 			}
 			try {
 				OR.load(fis);
+				log.debug("OR file loaded");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -61,6 +66,7 @@ public class TestBase {
 				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\executables\\chromedriver.exe");
 				
 				driver = new ChromeDriver();
+				log.debug("Chrome launched");
 			} else if(config.getProperty("browser").equals("ie")) {
 				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\executables\\IEDriverServer.exe");
 				
@@ -69,6 +75,7 @@ public class TestBase {
 			
 			// Getting the url added in the Config properties file
 			driver.get(config.getProperty("testsiteurl"));
+			log.debug("Navigated to : " + config.getProperty("testsiteurl"));
 			
 			// Maximise the browser window, may cause issues with some chromedriver versions
 			// driver.manage().window().maximize();
@@ -79,11 +86,21 @@ public class TestBase {
 		}
 	}
 	
+	public boolean isElementPresent(By by) {
+		try() {
+			
+		} catch() {
+			
+		}
+	}
+	
 	@AfterSuite
 	public void tearDown() {
 		// Will only execute if session is active
 		if(driver != null) {
 			driver.quit();
 		}
+		
+		log.debug("Test execution complete");
 	}
 }
