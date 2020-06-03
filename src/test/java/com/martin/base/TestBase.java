@@ -81,6 +81,9 @@ public class TestBase {
 	
 	@AfterSuite
 	public void tearDown() {
-		driver.quit();
+		// Will only execute if session is active
+		if(driver != null) {
+			driver.quit();
+		}
 	}
 }
