@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Data_Driven_Example" class="navigator-link">
-              <span class="suite-name border-skipped">Data Driven Example</span>
+              <span class="suite-name border-passed">Data Driven Example</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,21 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,  1 skipped,  </span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title skipped">Skipped methods</span>
-                    <span class="show-or-hide-methods skipped">
-                      <a href="#" panel-name="suite-Data_Driven_Example" class="hide-methods skipped suite-Data_Driven_Example"> (hide)</a> <!-- hide-methods skipped suite-Data_Driven_Example -->
-                      <a href="#" panel-name="suite-Data_Driven_Example" class="show-methods skipped suite-Data_Driven_Example"> (show)</a> <!-- show-methods skipped suite-Data_Driven_Example -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Data_Driven_Example" class="hide-methods passed suite-Data_Driven_Example"> (hide)</a> <!-- hide-methods passed suite-Data_Driven_Example -->
+                      <a href="#" panel-name="suite-Data_Driven_Example" class="show-methods passed suite-Data_Driven_Example"> (show)</a> <!-- show-methods passed suite-Data_Driven_Example -->
                     </span>
-                    <div class="method-list-content skipped suite-Data_Driven_Example">
+                    <div class="method-list-content passed suite-Data_Driven_Example">
                       <span>
-                        <img src="skipped.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Data_Driven_Example" title="com.martin.testcases.LoginTest" class="method navigator-link" hash-for-method="loginAsBankManager">loginAsBankManager</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content skipped suite-Data_Driven_Example -->
+                    </div> <!-- method-list-content passed suite-Data_Driven_Example -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,9 +117,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Data_Driven_Example" class="panel Data_Driven_Example">
-          <div class="suite-Data_Driven_Example-class-skipped">
+          <div class="suite-Data_Driven_Example-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
+              <img src="passed.png"/>
               <span class="class-name">com.martin.testcases.LoginTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -128,27 +128,10 @@
                   <a name="loginAsBankManager">
                   </a> <!-- loginAsBankManager -->
                   <span class="method-name">loginAsBankManager</span>
-                  <div class="stack-trace">org.openqa.selenium.WebDriverException: unknown error: cannot get automation extension
-from unknown error: page could not be found: chrome-extension://aapnijgdinlhnhlmodcfapnahmbfebeb/_generated_background_page.html
-  (Session info: chrome=83.0.4103.61)
-  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18363 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 10.08 seconds
-Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
-System info: host: &apos;DESKTOP-U1E5492&apos;, ip: &apos;192.168.1.17&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.7&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\marb6\AppData\Local\Temp\scoped_dir11728_344}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=83.0.4103.61, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: c05a55b1a7ca84ed18cda99816d5bf15
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:945)
-	at com.martin.base.TestBase.setUp(TestBase.java:74)
-... Removed 23 stack frames
-</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Data_Driven_Example-class-skipped -->
+          </div> <!-- suite-Data_Driven_Example-class-passed -->
         </div> <!-- panel Data_Driven_Example -->
         <div panel-name="test-xml-Data_Driven_Example" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -205,12 +188,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'loginAsBankManager')
 data.setCell(0, 2, 'com.martin.testcases.LoginTest')
-data.setCell(0, 3, 0);
+data.setCell(0, 3, 2235);
 window.suiteTableData['Data_Driven_Example']= { tableData: data, tableDiv: 'times-div-Data_Driven_Example'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 0 ms</span>
+              <span class="suite-total-time">Total running time: 2 seconds</span>
               <div id="times-div-Data_Driven_Example">
               </div> <!-- times-div-Data_Driven_Example -->
             </div> <!-- times-div -->
@@ -238,11 +221,17 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.martin.testcases.LoginTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">setUp</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
+              <div class="test-method">
+                <span class="method-name">loginAsBankManager</span>
+                <span class="method-start">4802 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-suite after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">7108 ms</span>
+              </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

@@ -70,8 +70,8 @@ public class TestBase {
 			// Getting the url added in the Config properties file
 			driver.get(config.getProperty("testsiteurl"));
 			
-			// Maximise the browser window
-			driver.manage().window().maximize();
+			// Maximise the browser window, may cause issues with some chromedriver versions
+			// driver.manage().window().maximize();
 			
 			// Add timeout waiting time from config file, needs to be converted to in
 			driver.manage().timeouts().implicitlyWait(Integer.parseInt(config.getProperty("implicit.wait")), TimeUnit.SECONDS);
