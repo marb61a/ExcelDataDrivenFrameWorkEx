@@ -7,6 +7,8 @@
     </classes>
   </test> <!-- Test -->
   <test name="Add Customer Test">
-  
+  	<classes>
+  		<class name="com.martin.testcases.AddCustomerTest"/>
+  	</classes>
   </test>
 </suite> <!-- Suite -->
