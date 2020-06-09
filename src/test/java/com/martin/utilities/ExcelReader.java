@@ -283,4 +283,42 @@ public class ExcelReader {
 		
 		return true;
 	}
+	
+	// Will return true if a sheet is created successfully otherwise will return false
+	public boolean addSheet(String sheetName) {
+		FileOutputStream fileOut;
+		
+		try {
+			workbook.createSheet(sheetName);
+			fileOut = new FileOutputStream(path);
+			workbook.write(fileOut);
+			fileOut.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
+	
+	// Will return true if a sheet is removed successfully otherwise will return false
+	public boolean removeSheet(String sheetName) {
+		int index = workbook.getSheetIndex(sheetName);
+		if(index == -1) {
+			return false;
+		}
+		
+		FileOutputStream fileOut;
+		try {
+			workbook.removeSheetAt(index);
+			fileOut = new FileOutputStream(path);
+			workbook.write(fileOut);
+			fileOut.close();
+		}  catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
 }
