@@ -160,7 +160,7 @@ public class ExcelReader {
 	}
 	
 	// Will return true if data is set successfully otherwise will return false
-	public boolean setCellData(String sheetName,String colName,int rowNum, String data,String url) {
+	public boolean setCellData(String sheetName, String colName, int rowNum, String data) {
 		try {
 			fis = new FileInputStream(path);
 			workbook = new XSSFWorkbook(fis);
@@ -171,8 +171,7 @@ public class ExcelReader {
 			}
 			
 			int index = workbook.getSheetIndex(sheetName);
-			int colNum = -1;
-			
+			int colNum = -1;			
 			if(index == -1) {
 				return false;
 			}
@@ -181,10 +180,41 @@ public class ExcelReader {
 			row = sheet.getRow(0);
 			
 			for(int i = 0; i < row.getLastCellNum(); i++) {
-				if(row.getCell(i).getStringCellValue().trim().equalsIgnoreCase(colName)) {
+				if(row.getCell(i).getStringCellValue().trim().equals(colName)) {
 					colNum = i;
 				}
 			}
+			
+			if(colNum == -1) {
+				return false;
+			}
+			
+			sheet.autoSizeColumn(colNum);
+			row = sheet.getRow(rowNum -1);
+			if(row == null) {
+				row = sheet.createRow(rowNum-1);
+			}
+			
+			cell = row.getCell(colNum);
+			if(cell == null) {
+				cell = row.createCell(colNum);
+			}
+			
+			cell.setCellValue(data);
+			fileOut = new FileOutputStream(path);
+			workbook.write(fileOut);
+			fileOut.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
+	
+	// Will return true if data is set successfully otherwise will return false
+	public boolean setCellData(String sheetName, String colName, int rowNum, String data) {
+		try {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
