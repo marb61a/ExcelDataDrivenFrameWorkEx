@@ -6,7 +6,12 @@ import java.util.Calendar;
 
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
+import org.apache.poi.xssf.usermodel.XSSFFont;
+import org.apache.poi.xssf.usermodel.XSSFHyperlink;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -192,7 +197,7 @@ public class ExcelReader {
 			sheet.autoSizeColumn(colNum);
 			row = sheet.getRow(rowNum -1);
 			if(row == null) {
-				row = sheet.createRow(rowNum-1);
+				row = sheet.createRow(rowNum -1);
 			}
 			
 			cell = row.getCell(colNum);
@@ -213,9 +218,64 @@ public class ExcelReader {
 	}
 	
 	// Will return true if data is set successfully otherwise will return false
-	public boolean setCellData(String sheetName, String colName, int rowNum, String data) {
+	public boolean setCellData(String sheetName, String colName, int rowNum, String data, String url) {
 		try {
+			fis = new FileInputStream(path);
+			workbook = new XSSFWorkbook(fis);
 			
+			// If there are no rowNum values return false
+			if(rowNum <= 0) {
+				return false;
+			}
+			
+			int index = workbook.getSheetIndex(sheetName);
+			int colNum = -1;			
+			if(index == -1) {
+				return false;
+			}
+			
+			sheet = workbook.getSheetAt(index);
+			row = sheet.getRow(0);
+			
+			for(int i = 0; i < row.getLastCellNum(); i++) {
+				if(row.getCell(i).getStringCellValue().trim().equalsIgnoreCase(colName)) {
+					colNum = i;
+				}
+			}
+			
+			if(colNum == -1) {
+				return false;
+			}
+			
+			sheet.autoSizeColumn(colNum);
+			row = sheet.getRow(rowNum -1);
+			if(row == null) {
+				row = sheet.createRow(rowNum -1);
+			}
+			
+			cell = row.getCell(colNum);
+			if(cell == null) {
+				cell = row.createCell(colNum);
+			}
+			
+			cell.setCellValue(data);
+			XSSFCreationHelper createHelper = workbook.getCreationHelper();
+			
+			// Cell style for hyperlinks
+			CellStyle hlink_style = workbook.createCellStyle();
+			XSSFFont hlink_font = workbook.createFont();
+		    hlink_font.setUnderline(XSSFFont.U_SINGLE);
+		    hlink_font.setColor(IndexedColors.BLUE.getIndex());
+		    hlink_style.setFont(hlink_font);
+		    
+		    XSSFHyperlink link = createHelper.createHyperlink(XSSFHyperlink.LINK_FILE);
+		    link.setAddress(url);
+		    cell.setHyperlink(link);
+		    cell.setCellStyle(hlink_style);
+		    
+		    fileOut = new FileOutputStream(path);
+			workbook.write(fileOut);
+			fileOut.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 			return false;
