@@ -435,4 +435,35 @@ public class ExcelReader {
 		}
 		return row.getLastCellNum();
 	}
+	
+	// Adding a hyperlink
+	public boolean addHyperLink(String sheetName, String screenShotColName, String testCaseName, int index, String url, String message) {
+		// Replaces the path separators
+		url = url.replace('\\', '/');
+		
+		if(!isSheetExist(sheetName)) {
+			return false;
+		}
+		sheet = workbook.getSheet(sheetName);
+		
+		for(int i = 2; i <= getRowCount(sheetName); i++) {
+			if(getCellData(sheetName, 0, 1).equalsIgnoreCase(testCaseName)) {
+				setCellData(sheetName, screenShotColName, i+index, message,url);
+				break;
+			}
+		}
+		
+		return true;
+	}
+	
+	// Get the cell row number
+	public int getCellRowNum(String sheetName,String colName,String cellValue){
+		for(int i = 2; i <= getRowCount(sheetName); i++) {
+			if(getCellData(sheetName,colName , i).equalsIgnoreCase(cellValue)) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
 }
