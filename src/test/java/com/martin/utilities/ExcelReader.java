@@ -362,4 +362,49 @@ public class ExcelReader {
 		
 		return true;
 	}
+	
+	// Remove a column and its contents
+	public boolean removeColumn(String sheetName, int colNum) {
+		try {
+			if(!isSheetExist(sheetName)) {
+				return false;
+			}
+			
+			fis = new FileInputStream(path);
+			workbook = new XSSFWorkbook(fis);
+			sheet = workbook.getSheet(sheetName);
+			
+			XSSFCellStyle style = workbook.createCellStyle();
+			style.setFillForegroundColor(HSSFColor.GREY_40_PERCENT.index);
+			XSSFCreationHelper createHelper = workbook.getCreationHelper();
+			style.setFillPattern(HSSFCellStyle.NO_FILL);
+			
+			for(int i = 0; i < getRowCount(sheetName); i++) {
+				row = sheet.getRow(i);
+				
+				if(row != null) {
+					cell = row.getCell(colNum);
+					
+					if(cell != null) {
+						cell.setCellStyle(style);
+						row.removeCell(cell);
+					}
+				}
+			}
+			
+			fileOut = new FileOutputStream(path);
+			workbook.write(fileOut);
+			fileOut.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
+	
+	// Find whether sheet exists or not
+	public boolean isSheetExist(String sheetName) {
+		
+	}
 }
