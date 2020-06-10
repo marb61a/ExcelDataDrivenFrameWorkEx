@@ -4,11 +4,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Calendar;
 
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFHyperlink;
@@ -315,6 +318,44 @@ public class ExcelReader {
 			workbook.write(fileOut);
 			fileOut.close();
 		}  catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
+	
+	// Will return true if a column is created successfully otherwise will return false
+	public boolean addColumn(String sheetName, String colName) {
+		try {
+			fis = new FileInputStream(path);
+			workbook = new XSSFWorkbook(fis);
+			int index = workbook.getSheetIndex(sheetName);
+			if(index == -1) {
+				return false;
+			}
+			
+			XSSFCellStyle style = workbook.createCellStyle();
+			style.setFillForegroundColor(HSSFColor.GREY_40_PERCENT.index);
+			style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+			sheet = workbook.getSheetAt(index);
+			
+			if(row == null) {
+				row = sheet.createRow(0);
+			}
+			
+			if(row.getLastCellNum() == -1) {
+				cell = row.createCell(0);
+			} else {
+				cell = row.createCell(row.getLastCellNum());
+			}
+			
+			cell.setCellValue(colName);
+			cell.setCellStyle(style);
+			fileOut = new FileOutputStream(path);
+			workbook.write(fileOut);
+			fileOut.close();
+		} catch(Exception e) {
 			e.printStackTrace();
 			return false;
 		}
