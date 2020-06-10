@@ -405,6 +405,34 @@ public class ExcelReader {
 	
 	// Find whether sheet exists or not
 	public boolean isSheetExist(String sheetName) {
+		int index = workbook.getSheetIndex(sheetName);
 		
+		if(index == -1) {
+			index=workbook.getSheetIndex(sheetName.toUpperCase());
+			
+			if(index == -1) {
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return true;
+		}
+	}
+	
+	// Will return the number of columns in a sheet
+	public int getColumnCount(String sheetName) {
+		// First check if the sheet exists
+		if(!isSheetExist(sheetName)) {
+			return -1;
+		}
+		
+		sheet = workbook.getSheet(sheetName);
+		row = sheet.getRow(0);
+		
+		if(row == null) {
+			return -1;
+		}
+		return row.getLastCellNum();
 	}
 }
