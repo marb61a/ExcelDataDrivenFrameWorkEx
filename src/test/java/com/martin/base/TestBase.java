@@ -16,6 +16,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import com.martin.utilities.ExcelReader;
+
 public class TestBase {
 	/*
 	 * All project initialisations will be done
@@ -27,6 +29,7 @@ public class TestBase {
 	public static Properties OR = new Properties();
 	public static FileInputStream fis;
 	public static Logger log = Logger.getLogger("devLogger");
+	public static ExcelReader excel = new ExcelReader(System.getProperty("user.dir")+"\\src\\test\\resources\\excel\\testdata.xlsx");
 	
 	@BeforeSuite
 	public void setUp() {
