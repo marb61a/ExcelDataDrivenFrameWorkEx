@@ -1,25 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-06-03T20:47:59Z" name="Data Driven Example" finished-at="2020-06-03T20:48:03Z" duration-ms="4138">
+  <suite started-at="2020-06-15T19:06:20Z" name="Data Driven Example" finished-at="2020-06-15T19:06:25Z" duration-ms="4252">
     <groups>
     </groups>
-    <test started-at="2020-06-03T20:47:59Z" name="LoginTest" finished-at="2020-06-03T20:48:03Z" duration-ms="4138">
-      <class name="com.martin.testcases.LoginTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.martin.testcases.LoginTest@1e097d59]" started-at="2020-06-03T21:47:54Z" name="setUp" finished-at="2020-06-03T21:47:59Z" duration-ms="4905" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="loginAsBankManager()[pri:0, instance:com.martin.testcases.LoginTest@1e097d59]" started-at="2020-06-03T21:47:59Z" name="loginAsBankManager" finished-at="2020-06-03T21:48:03Z" duration-ms="4121" status="PASS">
+    <test started-at="2020-06-15T19:06:20Z" name="Bank Manager Login Test" finished-at="2020-06-15T19:06:25Z" duration-ms="4202">
+      <class name="com.martin.testcases.BankManagerLoginTest">
+        <test-method signature="loginAsBankManager()[pri:0, instance:com.martin.testcases.BankManagerLoginTest@1f130eaf]" started-at="2020-06-15T20:06:20Z" name="loginAsBankManager" finished-at="2020-06-15T20:06:25Z" duration-ms="4183" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginAsBankManager -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.martin.testcases.LoginTest@1e097d59]" started-at="2020-06-03T21:48:04Z" name="tearDown" finished-at="2020-06-03T21:48:04Z" duration-ms="813" status="PASS">
+      </class> <!-- com.martin.testcases.BankManagerLoginTest -->
+    </test> <!-- Bank Manager Login Test -->
+    <test started-at="2020-06-15T19:06:25Z" name="Add Customer Test" finished-at="2020-06-15T19:06:25Z" duration-ms="13">
+      <class name="com.martin.testcases.AddCustomerTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.martin.testcases.AddCustomerTest@35293c05]" started-at="2020-06-15T20:06:15Z" name="setUp" finished-at="2020-06-15T20:06:20Z" duration-ms="5008" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addCustomer(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.martin.testcases.AddCustomerTest@35293c05]" started-at="2020-06-15T20:06:25Z" name="addCustomer" data-provider="getData" finished-at="2020-06-15T20:06:25Z" duration-ms="10" status="FAIL">
+          <exception class="org.testng.internal.reflect.MethodMatcherException">
+            <message>
+              <![CDATA[
+Data provider mismatch
+Method: addCustomer([Parameter{index=0, type=java.lang.String, declaredAnnotations=[]}, Parameter{index=1, type=java.lang.String, declaredAnnotations=[]}, Parameter{index=2, type=java.lang.String, declaredAnnotations=[]}, Parameter{index=3, type=java.lang.String, declaredAnnotations=[]}])
+Arguments: [(java.lang.String)Dave,(java.lang.String)Smith,(java.lang.String)A234wd,(java.lang.String)Customer added successfully,(java.lang.String)Y]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.internal.reflect.MethodMatcherException: 
+Data provider mismatch
+Method: addCustomer([Parameter{index=0, type=java.lang.String, declaredAnnotations=[]}, Parameter{index=1, type=java.lang.String, declaredAnnotations=[]}, Parameter{index=2, type=java.lang.String, declaredAnnotations=[]}, Parameter{index=3, type=java.lang.String, declaredAnnotations=[]}])
+Arguments: [(java.lang.String)Dave,(java.lang.String)Smith,(java.lang.String)A234wd,(java.lang.String)Customer added successfully,(java.lang.String)Y]
+	at org.testng.internal.reflect.DataProviderMethodMatcher.getConformingArguments(DataProviderMethodMatcher.java:49)
+	at org.testng.internal.Invoker.injectParameters(Invoker.java:1293)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1187)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.internal.reflect.MethodMatcherException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCustomer -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.martin.testcases.AddCustomerTest@35293c05]" started-at="2020-06-15T20:06:25Z" name="tearDown" finished-at="2020-06-15T20:06:26Z" duration-ms="969" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.martin.testcases.LoginTest -->
-    </test> <!-- LoginTest -->
+      </class> <!-- com.martin.testcases.AddCustomerTest -->
+    </test> <!-- Add Customer Test -->
   </suite> <!-- Data Driven Example -->
 </testng-results>

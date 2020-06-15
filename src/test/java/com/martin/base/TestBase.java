@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -30,6 +31,7 @@ public class TestBase {
 	public static FileInputStream fis;
 	public static Logger log = Logger.getLogger("devLogger");
 	public static ExcelReader excel = new ExcelReader(System.getProperty("user.dir")+"\\src\\test\\resources\\excel\\testdata.xlsx");
+	public static WebDriverWait wait;
 	
 	@BeforeSuite
 	public void setUp() {
@@ -87,6 +89,7 @@ public class TestBase {
 			// Add timeout waiting time from config file, needs to be converted to in
 			driver.manage().timeouts().implicitlyWait(Integer.parseInt(config.getProperty("implicit.wait")), TimeUnit.SECONDS);
 			
+			wait = new WebDriverWait(driver, 5);
 		}
 	}
 	
