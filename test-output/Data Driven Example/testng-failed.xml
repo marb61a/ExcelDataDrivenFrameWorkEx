@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Data Driven Example]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
   <test name="Add Customer Test(failed)">
     <classes>
       <class name="com.martin.testcases.AddCustomerTest">
         <methods>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="addCustomer"/>
+          <include name="addCustomer" invocation-numbers="0 1 2"/>
         </methods>
       </class> <!-- com.martin.testcases.AddCustomerTest -->
     </classes>
