@@ -10,15 +10,16 @@ import org.openqa.selenium.TakesScreenshot;
 import com.martin.base.TestBase;
 
 public class TestUtil extends TestBase {
-	public static void captureScreenshot(){
+	public static String screenshotPath;
+	public static String screenshotName;
+	
+	public static void captureScreenshot() throws IOException{
 		// Webdriver method for taking screenshot, needs to be cast
 		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		try {
-			FileUtils.copyFile(scrFile, new File(""));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		screenshotName = "error.jpg";
+
+		FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir")+"\\target\\surefire-reports\\html\\"+screenshotName));
 		
 	}
 }
