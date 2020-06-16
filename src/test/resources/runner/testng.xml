@@ -4,7 +4,7 @@
 	<listeners>
 	     	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
 	     	<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
-	     	<listener class-name="com.martin.listeners.CustomeListeners"/>
+	     	<listener class-name="com.martin.listeners.CustomListeners"/>
 	</listeners>
   <test thread-count="5" name="Bank Manager Login Test">
     <classes>
