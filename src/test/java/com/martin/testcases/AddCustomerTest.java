@@ -11,7 +11,7 @@ import com.martin.base.TestBase;
 
 public class AddCustomerTest extends TestBase {
 	@Test (dataProvider="getData")
-	public void addCustomer(String firstName, String lastName, String postCode, String alertText) throws Exception {
+	public void addCustomerTest(String firstName, String lastName, String postCode, String alertText) throws Exception {
 		// Uses the click and type methods from TestBase instead of using find element in each case
 		click("addCustBtn");
 		type("firstname", firstName);
@@ -29,7 +29,7 @@ public class AddCustomerTest extends TestBase {
 	
 	// Getting the data from Excel spreadsheet
 	@DataProvider
-	public Object [] [] getData() {
+	public Object[] [] getData() {
 		String sheetName = "AddCustomerTest";
 		int rows = excel.getRowCount(sheetName);
 		int cols = excel.getColumnCount(sheetName);
