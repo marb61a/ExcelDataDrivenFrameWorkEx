@@ -12,11 +12,12 @@ import com.martin.base.TestBase;
 public class AddCustomerTest extends TestBase {
 	@Test (dataProvider="getData")
 	public void addCustomer(String firstName, String lastName, String postCode, String alertText) throws Exception {
-		driver.findElement(By.cssSelector(OR.getProperty("addCustBtn"))).click();
-		driver.findElement(By.cssSelector(OR.getProperty("firstname"))).sendKeys(firstName);
-		driver.findElement(By.cssSelector(OR.getProperty("lastname"))).sendKeys(lastName);
-		driver.findElement(By.cssSelector(OR.getProperty("postCode"))).sendKeys(postCode);
-		driver.findElement(By.cssSelector(OR.getProperty("addBtn"))).click();
+		// Uses the click and type methods from TestBase instead of using find element in each case
+		click("addCustBtn");
+		type("firstname", firstName);
+		type("lastname", lastName);
+		type("postcode", postCode);
+		click("addBtn");
 		
 		Alert alert =wait.until(ExpectedConditions.alertIsPresent());
 		Assert.assertTrue(alert.getText().contains(alertText));

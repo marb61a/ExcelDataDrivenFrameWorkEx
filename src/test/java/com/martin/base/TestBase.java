@@ -21,6 +21,7 @@ import com.martin.utilities.ExcelReader;
 import com.martin.utilities.ExtentManager;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class TestBase {
 	/*
@@ -96,6 +97,18 @@ public class TestBase {
 			
 			wait = new WebDriverWait(driver, 5);
 		}
+	}
+	
+	public void click(String locator) {
+		driver.findElement(By.cssSelector(OR.getProperty(locator))).click();
+		
+		exTest.log(LogStatus.INFO, "Clicking on : "+locator);
+	}
+	
+	public void type(String locator, String value) {
+		driver.findElement(By.cssSelector(OR.getProperty(locator))).sendKeys(value);
+		
+		exTest.log(LogStatus.INFO, "Typing in : "+locator+" entered value as "+value);
 	}
 	
 	public boolean isElementPresent(By by) {
