@@ -8,9 +8,10 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.martin.base.TestBase;
+import com.martin.utilities.TestUtil;
 
 public class AddCustomerTest extends TestBase {
-	@Test (dataProvider="getData")
+	@Test (dataProviderClass=TestUtil.class, dataProvider="dp")
 	public void addCustomerTest(String firstName, String lastName, String postCode, String alertText) throws Exception {
 		// Uses the click and type methods from TestBase instead of using find element in each case
 		click("addCustBtn");
@@ -27,22 +28,4 @@ public class AddCustomerTest extends TestBase {
 		Thread.sleep(3000);
 	}
 	
-	// Getting the data from Excel spreadsheet
-	@DataProvider
-	public Object[] [] getData() {
-		String sheetName = "AddCustomerTest";
-		int rows = excel.getRowCount(sheetName);
-		int cols = excel.getColumnCount(sheetName);
-		
-		// 2d array for rows and columns
-		Object[][] data = new Object[rows -1][cols];
-		
-		for(int rowNum = 2; rowNum <= rows; rowNum++) {
-			for(int colNum = 0; colNum < cols; colNum++) {
-				data[rowNum -2][colNum] = excel.getCellData(sheetName, colNum, rowNum);
-			}
-		}
-		
-		return data;
-	}
 }

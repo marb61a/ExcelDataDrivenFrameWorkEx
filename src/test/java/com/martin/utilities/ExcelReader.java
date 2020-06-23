@@ -50,7 +50,7 @@ public class ExcelReader {
 			return 0;
 		} else {
 			sheet = workbook.getSheetAt(index);
-			int number = sheet.getLastRowNum();
+			int number = sheet.getLastRowNum()+1;
 			return number;
 		}
 	}
@@ -70,7 +70,7 @@ public class ExcelReader {
 			}
 			
 			sheet = workbook.getSheetAt(index);
-			row = sheet.getRow(rowNum);
+			row = sheet.getRow(0);
 			
 			for(int i = 0; i < row.getLastCellNum(); i++) {
 				if(row.getCell(i).getStringCellValue().trim().equals(colName.trim())) {
@@ -86,6 +86,11 @@ public class ExcelReader {
 			sheet = workbook.getSheetAt(index);
 			row = sheet.getRow(rowNum -1);
 			if(row == null) {
+				return "";
+			}
+			
+			cell = row.getCell(col_Num);
+			if(cell == null) {
 				return "";
 			}
 			
