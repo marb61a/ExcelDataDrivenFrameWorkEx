@@ -7,6 +7,7 @@ import java.util.Properties;
 
 public class TestProperties {
 	public static void main(String[] args) throws IOException {
+		System.out.println(System.getProperty("user.dir"));
 		Properties config = new Properties();
 		Properties OR = new Properties();
 		

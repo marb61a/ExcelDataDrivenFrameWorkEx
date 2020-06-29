@@ -16,7 +16,7 @@ public class CustomListeners extends TestBase implements ITestListener {
 
 	public void onTestStart(ITestResult arg0) {
 		// TODO Auto-generated method stub
-		
+		exTest = exReports.startTest(arg0.getName().toUpperCase());
 	}
 
 	public void onTestSuccess(ITestResult arg0) {
@@ -60,7 +60,7 @@ public class CustomListeners extends TestBase implements ITestListener {
 	}
 
 	public void onStart(ITestContext arg0) {
-		exTest = exReports.startTest(arg0.getName().toUpperCase());
+		//exTest = exReports.startTest(arg0.getName().toUpperCase());
 		
 	}
 

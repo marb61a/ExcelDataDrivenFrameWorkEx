@@ -14,11 +14,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import com.martin.utilities.ExcelReader;
 import com.martin.utilities.ExtentManager;
+import com.martin.utilities.TestUtil;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -129,6 +132,26 @@ public class TestBase {
 			return true;
 		} catch(NoSuchElementException e) {
 			return false;
+		}
+	}
+	
+	public static void verifyEquals (String expected, String actual) throws IOException {
+		try {
+			Assert.assertEquals(actual, expected);
+		} catch(Throwable t) {
+			TestUtil.captureScreenshot();
+			
+			// ReportNG
+			Reporter.log("<br>" + "Verification failure : " + t.getMessage() + "<br>");
+			Reporter.log("<a target=\"_blank\" href=" + TestUtil.screenshotName + "><img src=" + TestUtil.screenshotName
+					+ " height=200 width=200></img></a>");
+			Reporter.log("<br>");
+			Reporter.log("<br>");
+			
+			// Extent Reports
+			exTest.log(LogStatus.FAIL, " Verification failed with exception : " + t.getMessage());
+			exTest.log(LogStatus.FAIL, exTest.addScreenCapture(TestUtil.screenshotName));
+
 		}
 	}
 	
