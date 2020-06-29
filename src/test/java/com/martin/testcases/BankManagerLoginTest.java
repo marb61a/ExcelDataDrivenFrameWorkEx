@@ -11,7 +11,7 @@ public class BankManagerLoginTest extends TestBase {
 	@Test
 	public void loginAsBankManager() throws InterruptedException {
 		log.debug("Inside login test");
-		driver.findElement(By.cssSelector(OR.getProperty("bmlBtn"))).click();
+		click("bmlBtn_CSS");
 
 		Thread.sleep(2000);
 		Assert.assertTrue(isElementPresent(By.cssSelector(OR.getProperty("addCustBtn"))), "Login unsuccessful");
