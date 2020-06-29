@@ -157,7 +157,7 @@ public class ExcelReader {
 					Calendar cal =Calendar.getInstance();
 					cal.setTime (HSSFDateUtil.getJavaDate(d));
 					cellText = (String.valueOf(cal.get(Calendar.YEAR))).substring(2);
-					cellText = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH)+1 + "/" + cellText;
+					cellText = cal.get(Calendar.MONTH)+1 + "/" + cal.get(Calendar.DAY_OF_MONTH) + "/" + cellText;
 				}
 				
 				return cellText;
