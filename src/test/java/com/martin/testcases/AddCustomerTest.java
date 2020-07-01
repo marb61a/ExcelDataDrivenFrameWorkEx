@@ -14,14 +14,14 @@ public class AddCustomerTest extends TestBase {
 	@Test (dataProviderClass=TestUtil.class, dataProvider="dp")
 	public void addCustomerTest(String firstName, String lastName, String postCode, String alertText) throws Exception {
 		// Uses the click and type methods from TestBase instead of using find element in each case
-		click("addCustBtn");
-		type("firstname", firstName);
-		type("lastname", lastName);
-		type("postcode", postCode);
-		click("addBtn");
+		click("addCustBtn_CSS");
+		type("firstname_CSS", firstName);
+		type("lastname_XPATH", lastName);
+		type("postcode_CSS", postCode);
+		click("addBtn_CSS");
 		
 		Alert alert =wait.until(ExpectedConditions.alertIsPresent());
-		Assert.assertTrue(alert.getText().contains(alertText));
+		Assert.assertTrue(alert.getText().contains("alertText"));
 		
 		Thread.sleep(2000);
 		alert.accept();
