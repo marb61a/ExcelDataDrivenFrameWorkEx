@@ -344,6 +344,7 @@ public class ExcelReader {
 			style.setFillForegroundColor(HSSFColor.GREY_40_PERCENT.index);
 			style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 			sheet = workbook.getSheetAt(index);
+			row = sheet.getRow(0);
 			
 			if(row == null) {
 				row = sheet.createRow(0);
