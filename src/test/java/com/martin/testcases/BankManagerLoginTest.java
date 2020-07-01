@@ -11,7 +11,7 @@ import com.martin.base.TestBase;
 public class BankManagerLoginTest extends TestBase {
 	
 	@Test
-	public void loginAsBankManager() throws InterruptedException, IOException {
+	public void loginAsBankManagerTest() throws InterruptedException, IOException {
 		verifyEquals("abc", "xyz");
 		Thread.sleep(3000);
 		log.debug("Inside Login Test");
